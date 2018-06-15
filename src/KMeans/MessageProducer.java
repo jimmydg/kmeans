@@ -1,9 +1,17 @@
+package KMeans;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.core.JsonProcessingException;
+
 import org.apache.activemq.ActiveMQConnectionFactory;
 import task.KMeansParams;
 
 import javax.jms.*;
+import java.util.UUID;
 
 public class MessageProducer implements Runnable {
+
+    public static final ObjectMapper MAPPER = new ObjectMapper();
 
     @Override
     public void run() {
@@ -28,12 +36,11 @@ public class MessageProducer implements Runnable {
 
             producer.setDeliveryMode(DeliveryMode.NON_PERSISTENT);
 
-            String msg = "Hello World";
             KMeansParams params = new KMeansParams(2, 5, "s1");
-            
+
             // insert message
-            TextMessage message = session.createTextMessage(msg);
-            System.out.println("MessageProducer Sent: " + msg);
+            TextMessage message = createTextMessage(session, params);
+            System.out.println("KMeans.MessageProducer Sent: " + message);
             producer.send(message);
 
             session.close();
@@ -41,6 +48,14 @@ public class MessageProducer implements Runnable {
         } catch (Exception e) {
             System.out.println("Oh no, something went wrong.");
         }
+    }
+
+    public static TextMessage createTextMessage(Session session,KMeansParams parms) throws JMSException, JsonProcessingException {
+        String jsonString = MAPPER.writeValueAsString(parms);
+        TextMessage msg = session.createTextMessage(jsonString);
+//        msg.setJMSCorrelationID(UUID.randomUUID().toString());
+        msg.setJMSCorrelationID("blaat");
+        return msg;
     }
 
 }

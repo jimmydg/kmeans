@@ -1,3 +1,5 @@
+package KMeans;
+
 public class TestMQ {
     public static void main(String[] args) {
         MessageProducer producer = new MessageProducer();

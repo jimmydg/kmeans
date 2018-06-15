@@ -1,3 +1,5 @@
+package KMeans;
+
 import task.KMeansParams;
 import task.KMeansReturn;
 
@@ -230,7 +232,7 @@ public class KMeans {
 
 //    public static void main(String[] args) {
 //        if (args.length != 2) {
-//            System.err.println("Usage: KMeans <INPUT_FILE> <K>");
+//            System.err.println("Usage: KMeans.KMeans <INPUT_FILE> <K>");
 //            System.exit(-1);
 //        }
 //        String inputFile = args[0];
