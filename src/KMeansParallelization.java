@@ -17,6 +17,7 @@ public class KMeansParallelization {
         private float y;
 
         public Point2D(float x, float y) {
+
             this.x = x;
             this.y = y;
         }
