@@ -1,7 +1,9 @@
-import javax.jms.*;
 import org.apache.activemq.ActiveMQConnectionFactory;
+import task.KMeansParams;
 
-public class Producer implements Runnable {
+import javax.jms.*;
+
+public class MessageProducer implements Runnable {
 
     @Override
     public void run() {
@@ -19,18 +21,19 @@ public class Producer implements Runnable {
             Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 
             // Create Destination queue
-            Destination queue = session.createQueue("KMEANS_QUEU");
+            Destination queue = session.createQueue("KMEANS_QUEUE");
 
             // Create a producer
-            MessageProducer producer = session.createProducer(queue);
+            javax.jms.MessageProducer producer = session.createProducer(queue);
 
             producer.setDeliveryMode(DeliveryMode.NON_PERSISTENT);
 
             String msg = "Hello World";
-
+            KMeansParams params = new KMeansParams(2, 5, "s1");
+            
             // insert message
             TextMessage message = session.createTextMessage(msg);
-            System.out.println("Producer Sent: " + msg);
+            System.out.println("MessageProducer Sent: " + msg);
             producer.send(message);
 
             session.close();

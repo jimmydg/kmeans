@@ -2,7 +2,7 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 
 import javax.jms.*;
 
-public class Consumer implements Runnable {
+public class MessageConsumer implements Runnable {
 
     @Override
     public void run() {
@@ -21,14 +21,14 @@ public class Consumer implements Runnable {
             //Create queue
             Destination queue = session.createQueue("KMEANS_QUEU");
 
-            MessageConsumer consumer = session.createConsumer(queue);
+            javax.jms.MessageConsumer consumer = session.createConsumer(queue);
 
-            Message message = consumer.receive(1000);
+            Message message = consumer.receive();
 
             if (message instanceof TextMessage) {
                 TextMessage textMessage = (TextMessage) message;
                 String text = textMessage.getText();
-                System.out.println("Consumer Received: " + text);
+                System.out.println("MessageConsumer Received: " + text);
             }
 
             session.close();

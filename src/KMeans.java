@@ -1,19 +1,20 @@
+import task.KMeansParams;
+import task.KMeansReturn;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class KMeans {
-    private static final int REPLICATION_FACTOR = 200;
 
-    public static void main(String[] args) {
-        if (args.length != 2) {
-            System.err.println("Usage: KMeans <INPUT_FILE> <K>");
-            System.exit(-1);
-        }
-        String inputFile = args[0];
-        int k = Integer.valueOf(args[1]);
-
+    public KMeansReturn execute(KMeansParams params) {
+        String inputFile = params.getInputFile();
+        int k = params.getAmountOfClusters();
+        int numThreads = params.getNumThreads();
         List<Point2D> dataset = null;
         try {
             dataset = getDataset(inputFile);
@@ -23,145 +24,38 @@ public class KMeans {
         }
 
         List<Point2D> centers = initializeRandomCenters(k, 0, 1000000);
+        System.out.println("Parallelized version");
         long start = System.currentTimeMillis();
-        List<Point2D> finalCenters = kmeans(centers, dataset, k);
-        System.out.println("Final clusters for file: " + inputFile + ":");
-        System.out.println(finalCenters);
-        System.out.println();
-        System.out.println("Time elapsed: " + (System.currentTimeMillis() - start) + "ms");
+        List<Point2D> result = concurrentKmeans(centers, dataset, k, numThreads);
+        Long runtime = (System.currentTimeMillis() - start);
+
+
+        KMeansReturn kMeansReturn = new KMeansReturn();
+        kMeansReturn.setResult(result);
+        kMeansReturn.setRunTime(runtime);
+
+        return kMeansReturn;
     }
 
-    /**
-     * Receives an input file, splits the file by comma (",") and returns each coordinate as a float and create a new
-     * Point2D instance.
-     *
-     * @param inputFile
-     * @return
-     * @throws Exception
-     */
-    public static List<Point2D> getDataset(String inputFile) throws Exception {
-        List<Point2D> dataset = new ArrayList<>();
-        BufferedReader br = new BufferedReader(new FileReader(inputFile));
-        String line;
+    private static final int REPLICATION_FACTOR = 200;
+    private static final int NUM_THREADS = 30;
 
-        while ((line = br.readLine()) != null) {
-            String[] tokens = line.split(",");
-            float x = Float.valueOf(tokens[0]);
-            float y = Float.valueOf(tokens[1]);
-            Point2D point = new Point2D(x, y);
-            //Only add a max amount to better observe parallelization
-            for (int i = 0; i < REPLICATION_FACTOR; i++)
-            {
-                dataset.add(point);
-            }
-        }
-        br.close();
-        return dataset;
-    }
-
-    /**
-     * Randomly initialize n centers/stages
-     * @param n
-     * @param lowerBound
-     * @param upperBound
-     * @return
-     */
-    public static List<Point2D> initializeRandomCenters(int n, int lowerBound, int upperBound) {
-        List<Point2D> centers = new ArrayList<>(n);
-        for (int i = 0; i < n; i++) {
-            float x = (float) (Math.random() * (upperBound - lowerBound) + lowerBound);
-            float y = (float) (Math.random() * (upperBound - lowerBound) + lowerBound);
-            Point2D point = new Point2D(x, y);
-            centers.add(point);
-        }
-        return centers;
-    }
-
-    /**
-     * Compute the final centers. The do/while loop checks if the algorithm converged. Which means it only finishes
-     * when the new centers are qual to the old center
-     * @param centers randomly initialized centers
-     * @param dataset set of point
-     * @param k number of clusters
-     * @return list of final centers
-     */
-    public static List<Point2D> kmeans(List<Point2D> centers, List<Point2D> dataset, int k) {
-        boolean converged;
-        do {
-            List<Point2D> newCenters = getNewCenters(dataset, centers);
-            double dist = getDistance(centers, newCenters);
-            centers = newCenters;
-            converged = dist == 0;
-        } while (!converged);
-        return centers;
-    }
-
-
-    /**
-     *
-     * @param dataset
-     * @param centers list of clusters
-     * @return a list with the mean of each cluster
-     */
-    public static List<Point2D> getNewCenters(List<Point2D> dataset, List<Point2D> centers) {
-        List<List<Point2D>> clusters = new ArrayList<>(centers.size());
-
-        for (int i = 0; i < centers.size(); i++) {
-            clusters.add(new ArrayList<Point2D>());
-        }
-
-        for (Point2D data : dataset) {
-            int index = data.getNearestPointIndex(centers);
-            clusters.get(index).add(data);
-        }
-
-        List<Point2D> newCenters = new ArrayList<>(centers.size());
-        for (List<Point2D> cluster : clusters) {
-            newCenters.add(Point2D.getMean(cluster));
-        }
-
-        return newCenters;
-    }
-
-    public static double getDistance(List<Point2D> oldCenters, List<Point2D> newCenters) {
-        double accumDist = 0;
-        for (int i = 0; i < oldCenters.size(); i++) {
-            double dist = oldCenters.get(i).getDistance(newCenters.get(i));
-            accumDist += dist;
-        }
-        return accumDist;
-    }
-
-    /**
-     * Inner class to representate the data
-     */
     public static class Point2D {
 
         private float x;
         private float y;
 
         public Point2D(float x, float y) {
+
             this.x = x;
             this.y = y;
         }
 
-        /**
-         * Calculate the eucledian distance between two points
-         *
-         * @param other
-         * @return
-         */
         private double getDistance(Point2D other) {
             return Math.sqrt(Math.pow(this.x - other.x, 2)
                     + Math.pow(this.y - other.y, 2));
         }
 
-        /**
-         * Retrieve the index of the nearest point in a list
-         *
-         * @param points
-         * @return
-         */
         public int getNearestPointIndex(List<Point2D> points) {
             int index = -1;
             double minDist = Double.MAX_VALUE;
@@ -175,13 +69,6 @@ public class KMeans {
             return index;
         }
 
-        /**
-         * Retrieves a list of points and returns the main point of that list
-         * This is used to calculate new centers
-         *
-         * @param points
-         * @return
-         */
         public static Point2D getMean(List<Point2D> points) {
             float accumX = 0;
             float accumY = 0;
@@ -209,5 +96,168 @@ public class KMeans {
 
     }
 
+    public static List<Point2D> getDataset(String inputFile) throws Exception {
+        List<Point2D> dataset = new ArrayList<>();
+        BufferedReader br = new BufferedReader(new FileReader(inputFile));
+        String line;
+        while ((line = br.readLine()) != null) {
+            String[] tokens = line.split(",");
+            float x = Float.valueOf(tokens[0]);
+            float y = Float.valueOf(tokens[1]);
+            Point2D point = new Point2D(x, y);
+            for (int i = 0; i < REPLICATION_FACTOR; i++)
+                dataset.add(point);
+        }
+        br.close();
+        return dataset;
+    }
+
+    public static List<Point2D> initializeRandomCenters(int n, int lowerBound, int upperBound) {
+        List<Point2D> centers = new ArrayList<>(n);
+        for (int i = 0; i < n; i++) {
+            float x = (float) (Math.random() * (upperBound - lowerBound) + lowerBound);
+            float y = (float) (Math.random() * (upperBound - lowerBound) + lowerBound);
+            Point2D point = new Point2D(x, y);
+            centers.add(point);
+        }
+        return centers;
+    }
+
+    private static Callable<Void> createWorker(final List<Point2D> partition, final List<Point2D> centers,
+                                               final List<List<Point2D>> clusters) {
+        return new Callable<Void>() {
+
+            @Override
+            public Void call() throws Exception {
+                int indexes[] = new int[partition.size()];
+                for (int i = 0; i < partition.size(); i++) {
+                    Point2D data = partition.get(i);
+                    int index = data.getNearestPointIndex(centers);
+                    indexes[i] = index;
+                }
+                synchronized (clusters) {
+                    for (int i = 0; i < indexes.length; i++) {
+                        clusters.get(indexes[i]).add(partition.get(i));
+                    }
+                }
+                return null;
+            }
+
+        };
+    }
+
+    private static <V> List<List<V>> partition(List<V> list, int parts) {
+        List<List<V>> lists = new ArrayList<List<V>>(parts);
+        for (int i = 0; i < parts; i++) {
+            lists.add(new ArrayList<V>());
+        }
+        for (int i = 0; i < list.size(); i++) {
+            lists.get(i % parts).add(list.get(i));
+        }
+        return lists;
+    }
+
+    public static List<Point2D> concurrentGetNewCenters(final List<Point2D> dataset, final List<Point2D> centers, int numThreads) {
+        final List<List<Point2D>> clusters = new ArrayList<List<Point2D>>(centers.size());
+        for (int i = 0; i < centers.size(); i++) {
+            clusters.add(new ArrayList<Point2D>());
+        }
+        List<List<Point2D>> partitionedDataset = partition(dataset, numThreads);
+        ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+        List<Callable<Void>> workers = new ArrayList<>();
+        for (int i = 0; i < numThreads; i++) {
+            workers.add(createWorker(partitionedDataset.get(i), centers, clusters));
+        }
+        try {
+            executor.invokeAll(workers);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
+        List<Point2D> newCenters = new ArrayList<>(centers.size());
+        for (List<Point2D> cluster : clusters) {
+            newCenters.add(Point2D.getMean(cluster));
+        }
+        return newCenters;
+    }
+
+    public static List<Point2D> getNewCenters(List<Point2D> dataset, List<Point2D> centers) {
+        List<List<Point2D>> clusters = new ArrayList<>(centers.size());
+        for (int i = 0; i < centers.size(); i++) {
+            clusters.add(new ArrayList<Point2D>());
+        }
+        for (Point2D data : dataset) {
+            int index = data.getNearestPointIndex(centers);
+            clusters.get(index).add(data);
+        }
+        List<Point2D> newCenters = new ArrayList<>(centers.size());
+        for (List<Point2D> cluster : clusters) {
+            newCenters.add(Point2D.getMean(cluster));
+        }
+        return newCenters;
+    }
+
+    public static double getDistance(List<Point2D> oldCenters, List<Point2D> newCenters) {
+        double accumDist = 0;
+        for (int i = 0; i < oldCenters.size(); i++) {
+            double dist = oldCenters.get(i).getDistance(newCenters.get(i));
+            accumDist += dist;
+        }
+        return accumDist;
+    }
+
+    public static List<Point2D> kmeans(List<Point2D> centers, List<Point2D> dataset, int k) {
+        boolean converged;
+        do {
+            List<Point2D> newCenters = getNewCenters(dataset, centers);
+            double dist = getDistance(centers, newCenters);
+            centers = newCenters;
+            converged = dist == 0;
+        } while (!converged);
+        return centers;
+    }
+
+    public static List<Point2D> concurrentKmeans(List<Point2D> centers, List<Point2D> dataset, int k, int numThreads) {
+        boolean converged;
+        do {
+            List<Point2D> newCenters = concurrentGetNewCenters(dataset, centers, numThreads);
+            double dist = getDistance(centers, newCenters);
+            centers = newCenters;
+            converged = dist == 0;
+        } while (!converged);
+        return centers;
+    }
+
+//    public static void main(String[] args) {
+//        if (args.length != 2) {
+//            System.err.println("Usage: KMeans <INPUT_FILE> <K>");
+//            System.exit(-1);
+//        }
+//        String inputFile = args[0];
+//        int k = Integer.valueOf(args[1]);
+//        List<Point2D> dataset = null;
+//        try {
+//            dataset = getDataset(inputFile);
+//        } catch (Exception e) {
+//            System.err.println("ERROR: Could not read file " + inputFile);
+//            System.exit(-1);
+//        }
+//        List<Point2D> centers = initializeRandomCenters(k, 0, 1000000);
+//        System.out.println("Non-parallelized version");
+//        long start = System.currentTimeMillis();
+//        List<Point2D> result1 = kmeans(centers, dataset, k);
+//        System.out.println("Time elapsed: " + (System.currentTimeMillis() - start) + "ms");
+//        System.out.println(result1);
+//        System.out.println();
+//        System.out.println();
+//        System.out.println("Parallelized version");
+//        start = System.currentTimeMillis();
+//        List<Point2D> result2 = concurrentKmeans(centers, dataset, k);
+//        System.out.println("Time elapsed: " + (System.currentTimeMillis() - start) + "ms");
+//        System.out.println(result2);
+//        System.out.println();
+//        System.out.println();
+//        System.exit(0);
+//    }
 
 }

@@ -1,9 +1,7 @@
-import java.io.IOException;
-
 public class TestMQ {
     public static void main(String[] args) {
-        Producer producer = new Producer();
-        Consumer consumer = new Consumer();
+        MessageProducer producer = new MessageProducer();
+        MessageConsumer consumer = new MessageConsumer();
 
         Thread producerThread = new Thread(producer);
         producerThread.start();
