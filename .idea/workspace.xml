@@ -2,22 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f7e3c1d4-4231-43f1-a999-37352c5512fc" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/activemq_all_5_15_4.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/kmeans.iml" beforeDir="false" afterPath="$PROJECT_DIR$/kmeans.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/kmeans/Consumer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/kmeans/KMeans$Point2D.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/kmeans/KMeans.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/kmeans/KMeansParallelization$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/kmeans/KMeansParallelization$Point2D.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/kmeans/KMeansParallelization.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/kmeans/Producer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/kmeans/TestMQ.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/KMeans.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KMeans/KMeans.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MessageConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KMeans/MessageConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MessageProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KMeans/MessageProducer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestMQ.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KMeans/TestMQ.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/task/KMeansReturn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/task/KMeansReturn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/kmeans/KMeans/KMeans$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/kmeans/KMeans/KMeans$Point2D.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/kmeans/KMeans/KMeans.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/kmeans/KMeans/MessageProducer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/KMeans/KMeans.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KMeans/KMeans.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/KMeans/MessageConsumer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/KMeans/MessageProducer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/KMeans/TestMQ.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,22 +20,16 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="TestMQ.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/KMeans/TestMQ.java">
+      <file leaf-file-name="KMeansProcessor.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/KMeans/KMeansProcessor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="31" lean-forward="true" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MessageProducer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/KMeans/MessageProducer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="34" column="67" lean-forward="true" selection-start-line="34" selection-start-column="67" selection-end-line="34" selection-end-column="67" />
+            <state relative-caret-position="476">
+              <caret line="28" column="67" lean-forward="true" selection-start-line="28" selection-start-column="67" selection-end-line="28" selection-end-column="67" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -50,11 +37,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MessageConsumer.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/KMeans/MessageConsumer.java">
+      <file leaf-file-name="KMeansClient.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/KMeans/KMeansClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="44" column="69" selection-start-line="44" selection-start-column="69" selection-end-line="44" selection-end-column="69" />
+            <state relative-caret-position="-17">
+              <caret line="23" column="34" lean-forward="true" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -62,50 +49,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="KMeansParams.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/task/KMeansParams.java">
+      <file leaf-file-name="KMeans.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/KMeans/KMeans.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" selection-start-line="5" selection-end-line="7" selection-end-column="29" />
-              <folding>
-                <element signature="e#465#466#0" expanded="true" />
-                <element signature="e#497#498#0" expanded="true" />
-                <element signature="e#547#548#0" expanded="true" />
-                <element signature="e#589#590#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="KMeansReturn.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/task/KMeansReturn.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="799">
-              <caret line="55" column="5" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
+            <state relative-caret-position="493">
+              <caret line="29" selection-start-line="29" selection-end-line="29" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#659#660#0" expanded="true" />
-                <element signature="e#692#693#0" expanded="true" />
-                <element signature="e#741#742#0" expanded="true" />
-                <element signature="e#785#786#0" expanded="true" />
-                <element signature="e#825#826#0" expanded="true" />
-                <element signature="e#864#865#0" expanded="true" />
-                <element signature="e#925#926#0" expanded="true" />
-                <element signature="e#981#982#0" expanded="true" />
-                <element signature="e#1017#1018#0" expanded="true" />
-                <element signature="e#1049#1050#0" expanded="true" />
-                <element signature="e#1099#1100#0" expanded="true" />
-                <element signature="e#1141#1142#0" expanded="true" />
+                <element signature="e#1669#1670#0" expanded="true" />
+                <element signature="e#1701#1702#0" expanded="true" />
+                <element signature="e#1738#1739#0" expanded="true" />
+                <element signature="e#1772#1773#0" expanded="true" />
+                <element signature="e#1803#1804#0" expanded="true" />
+                <element signature="e#1835#1836#0" expanded="true" />
+                <element signature="e#1872#1873#0" expanded="true" />
+                <element signature="e#1906#1907#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ObjectMapper.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/Downloads/apache-activemq-5.15.4/lib/optional/jackson-databind-2.9.4.jar!/com/fasterxml/jackson/databind/ObjectMapper.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="436">
-              <caret line="1131" column="17" selection-start-line="1131" selection-start-column="17" selection-end-line="1131" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -125,6 +84,11 @@
       <find>main</find>
       <find>Thread</find>
       <find>Sent:</find>
+      <find>createConsumer</find>
+      <find>new KMeansParams</find>
+      <find>objectmapper</find>
+      <find>Parallelized version</find>
+      <find>kmeans_queue</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -147,11 +111,14 @@
         <option value="$PROJECT_DIR$/src/MessageConsumer.java" />
         <option value="$PROJECT_DIR$/src/TestMQ.java" />
         <option value="$PROJECT_DIR$/src/KMeans.java" />
-        <option value="$PROJECT_DIR$/src/KMeans/KMeans.java" />
         <option value="$PROJECT_DIR$/src/KMeans/TestMQ.java" />
-        <option value="$PROJECT_DIR$/src/KMeans/MessageProducer.java" />
-        <option value="$PROJECT_DIR$/src/task/KMeansReturn.java" />
         <option value="$PROJECT_DIR$/src/KMeans/MessageConsumer.java" />
+        <option value="$PROJECT_DIR$/src/task/KMeansReturn.java" />
+        <option value="$PROJECT_DIR$/src/task/KMeansParams.java" />
+        <option value="$PROJECT_DIR$/src/KMeans/MessageProducer.java" />
+        <option value="$PROJECT_DIR$/src/KMeans/KMeansClient.java" />
+        <option value="$PROJECT_DIR$/src/KMeans/KMeansProcessor.java" />
+        <option value="$PROJECT_DIR$/src/KMeans/KMeans.java" />
       </list>
     </option>
   </component>
@@ -165,10 +132,10 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-44" />
-    <option name="y" value="66" />
-    <option name="width" value="1295" />
-    <option name="height" value="815" />
+    <option name="x" value="54" />
+    <option name="y" value="-8" />
+    <option name="width" value="2514" />
+    <option name="height" value="1456" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -178,6 +145,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -206,21 +176,18 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/apache-activemq-5.15.4/activemq-all-5.15.4.jar!/" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/hva-pc-assignment-6-master" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.import" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -239,18 +206,34 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.TestMQ">
-    <configuration name="KMeans" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="KMeans.KMeans" />
+  <component name="RunManager" selected="Application.KMeansClient">
+    <configuration name="KMeansClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="KMeans.KMeansClient" />
       <module name="kmeans" />
-      <option name="PROGRAM_PARAMETERS" value="s1 6" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="KMeans.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
     </configuration>
     <configuration name="KMeansParallelization" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="KMeans.KMeans" />
       <module name="kmeans" />
       <option name="PROGRAM_PARAMETERS" value="s2 6" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+    </configuration>
+    <configuration name="KMeansProcessor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="KMeans.KMeansProcessor" />
+      <module name="kmeans" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="KMeans.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
     </configuration>
     <configuration name="MessageConsumer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="KMeans.MessageConsumer" />
@@ -310,17 +293,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.KMeansParallelization" />
-      <item itemvalue="Application.KMeans" />
       <item itemvalue="Application.MessageProducer" />
       <item itemvalue="Application.MessageConsumer" />
       <item itemvalue="Application.TestMQ" />
+      <item itemvalue="Application.KMeansProcessor" />
+      <item itemvalue="Application.KMeansClient" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.KMeansClient" />
+        <item itemvalue="Application.KMeansProcessor" />
         <item itemvalue="Application.TestMQ" />
         <item itemvalue="Application.MessageConsumer" />
         <item itemvalue="Application.MessageProducer" />
-        <item itemvalue="Application.KMeans" />
       </list>
     </recent_temporary>
   </component>
@@ -335,12 +320,13 @@
       <option name="presentableId" value="Default" />
       <updated>1526905385146</updated>
       <workItem from="1526905386509" duration="9419000" />
-      <workItem from="1529054135167" duration="13210000" />
+      <workItem from="1529054135167" duration="15125000" />
+      <workItem from="1529226326211" duration="3974000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22629000" />
+    <option name="totallyTimeSpent" value="28518000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-8" width="2514" height="1456" extended-state="6" />
@@ -356,20 +342,20 @@
       <window_info anchor="right" id="Maven Projects" order="7" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="11" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.32884902" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.3281366" />
       <window_info anchor="bottom" id="Spring" order="0" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32905984" />
       <window_info id="Capture Tool" order="3" />
       <window_info id="Designer" order="2" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.118094474" />
       <window_info anchor="right" id="Database" order="6" />
-      <window_info anchor="bottom" id="Find" order="2" weight="0.32884902" />
+      <window_info anchor="bottom" id="Find" order="2" weight="0.3281366" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info id="Favorites" order="5" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="4" weight="0.39985052" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.39940608" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -385,24 +371,91 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/KMeans/MessageConsumer.java</url>
-          <line>36</line>
-          <properties />
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="11" />
+      <option name="time" value="14" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/KMeans/TestMQ.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/KMeans/MessageProducer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="34" column="67" lean-forward="true" selection-start-line="34" selection-start-column="67" selection-end-line="34" selection-end-column="67" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/KMeans/MessageConsumer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="901">
+          <caret line="58" column="6" lean-forward="true" selection-start-line="58" selection-start-column="6" selection-end-line="58" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/task/KMeansParams.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="7" selection-end-column="29" />
+          <folding>
+            <element signature="e#465#466#0" expanded="true" />
+            <element signature="e#497#498#0" expanded="true" />
+            <element signature="e#547#548#0" expanded="true" />
+            <element signature="e#589#590#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/task/KMeansReturn.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="55" column="5" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Downloads/apache-activemq-5.15.4/lib/optional/jackson-databind-2.9.4.jar!/com/fasterxml/jackson/databind/ObjectMapper.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19227">
+          <caret line="1131" column="17" selection-start-line="1131" selection-start-column="17" selection-end-line="1131" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/KMeans/KMeansProcessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/KMeans/KMeans.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="986">
           <caret line="61" column="7" lean-forward="true" selection-start-line="61" selection-start-column="7" selection-end-line="61" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1669#1670#0" expanded="true" />
+            <element signature="e#1701#1702#0" expanded="true" />
+            <element signature="e#1738#1739#0" expanded="true" />
+            <element signature="e#1772#1773#0" expanded="true" />
+            <element signature="e#1803#1804#0" expanded="true" />
+            <element signature="e#1835#1836#0" expanded="true" />
+            <element signature="e#1872#1873#0" expanded="true" />
+            <element signature="e#1906#1907#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -413,6 +466,14 @@
           <caret line="219" column="36" lean-forward="true" selection-start-line="219" selection-start-column="36" selection-end-line="219" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1669#1670#0" expanded="true" />
+            <element signature="e#1701#1702#0" expanded="true" />
+            <element signature="e#1738#1739#0" expanded="true" />
+            <element signature="e#1772#1773#0" expanded="true" />
+            <element signature="e#1803#1804#0" expanded="true" />
+            <element signature="e#1835#1836#0" expanded="true" />
+            <element signature="e#1872#1873#0" expanded="true" />
+            <element signature="e#1906#1907#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -429,13 +490,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jmsContext.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="29" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/jmsContext.xml" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_172/src.zip!/java/io/InputStream.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="290">
@@ -449,6 +504,14 @@
           <caret line="8" column="28" lean-forward="true" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1669#1670#0" expanded="true" />
+            <element signature="e#1701#1702#0" expanded="true" />
+            <element signature="e#1738#1739#0" expanded="true" />
+            <element signature="e#1772#1773#0" expanded="true" />
+            <element signature="e#1803#1804#0" expanded="true" />
+            <element signature="e#1835#1836#0" expanded="true" />
+            <element signature="e#1872#1873#0" expanded="true" />
+            <element signature="e#1906#1907#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -464,10 +527,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="42" column="34" selection-start-line="42" selection-start-column="21" selection-end-line="42" selection-end-column="34" />
-          <folding>
-            <element signature="e#10124#10125#0" expanded="true" />
-            <element signature="e#10174#10175#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -475,20 +534,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="453">
           <caret line="137" column="23" selection-start-line="137" selection-start-column="23" selection-end-line="137" selection-end-column="23" />
-          <folding>
-            <element signature="e#4382#4383#0" expanded="true" />
-            <element signature="e#4434#4435#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/KMeans/KMeans.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -527,13 +572,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/Downloads/apache-activemq-5.15.4/activemq-all-5.15.4.jar!/javax/jms/Session.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="49" column="44" selection-start-line="49" selection-start-column="44" selection-end-line="49" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/Downloads/apache-activemq-5.15.4/activemq-all-5.15.4.jar!/javax/jms/Message.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="605">
@@ -541,24 +579,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/KMeans/TestMQ.java">
+    <entry file="jar://$USER_HOME$/Downloads/apache-activemq-5.15.4/lib/optional/jackson-databind-2.9.4.jar!/com/fasterxml/jackson/databind/ObjectMapper.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="31" lean-forward="true" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+        <state relative-caret-position="15861">
+          <caret line="1131" column="17" selection-start-line="1131" selection-start-column="17" selection-end-line="1131" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/Downloads/apache-activemq-5.15.4/lib/optional/jackson-databind-2.9.4.jar!/com/fasterxml/jackson/databind/ObjectMapper.class">
+    <entry file="file://$PROJECT_DIR$/.gitignore.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://$USER_HOME$/Downloads/apache-activemq-5.15.4/activemq-all-5.15.4.jar!/javax/jms/Session.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
-          <caret line="1131" column="17" selection-start-line="1131" selection-start-column="17" selection-end-line="1131" selection-end-column="17" />
+        <state relative-caret-position="809">
+          <caret line="51" column="20" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/KMeans/TestMQ.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/KMeans/MessageConsumer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="41" selection-start-line="41" selection-end-line="44" selection-end-column="71" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/KMeans/MessageProducer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="935">
+          <caret line="55" column="58" selection-start-line="55" selection-start-column="32" selection-end-line="55" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/task/KMeansReturn.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="41" column="15" selection-start-line="41" selection-start-column="15" selection-end-line="41" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#817#818#0" expanded="true" />
+            <element signature="e#856#857#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/task/KMeansParams.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" selection-start-line="5" selection-end-line="7" selection-end-column="29" />
+        <state relative-caret-position="153">
+          <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
           <folding>
             <element signature="e#465#466#0" expanded="true" />
             <element signature="e#497#498#0" expanded="true" />
@@ -568,42 +648,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/task/KMeansReturn.java">
+    <entry file="file://$PROJECT_DIR$/src/KMeans/KMeans.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="55" column="5" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
+        <state relative-caret-position="493">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#659#660#0" expanded="true" />
-            <element signature="e#692#693#0" expanded="true" />
-            <element signature="e#741#742#0" expanded="true" />
-            <element signature="e#785#786#0" expanded="true" />
-            <element signature="e#825#826#0" expanded="true" />
-            <element signature="e#864#865#0" expanded="true" />
-            <element signature="e#925#926#0" expanded="true" />
-            <element signature="e#981#982#0" expanded="true" />
-            <element signature="e#1017#1018#0" expanded="true" />
-            <element signature="e#1049#1050#0" expanded="true" />
-            <element signature="e#1099#1100#0" expanded="true" />
-            <element signature="e#1141#1142#0" expanded="true" />
+            <element signature="e#1669#1670#0" expanded="true" />
+            <element signature="e#1701#1702#0" expanded="true" />
+            <element signature="e#1738#1739#0" expanded="true" />
+            <element signature="e#1772#1773#0" expanded="true" />
+            <element signature="e#1803#1804#0" expanded="true" />
+            <element signature="e#1835#1836#0" expanded="true" />
+            <element signature="e#1872#1873#0" expanded="true" />
+            <element signature="e#1906#1907#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/KMeans/MessageProducer.java">
+    <entry file="file://$PROJECT_DIR$/src/KMeans/KMeansClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="34" column="67" lean-forward="true" selection-start-line="34" selection-start-column="67" selection-end-line="34" selection-end-column="67" />
+        <state relative-caret-position="-17">
+          <caret line="23" column="34" lean-forward="true" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/KMeans/MessageConsumer.java">
+    <entry file="file://$PROJECT_DIR$/src/KMeans/KMeansProcessor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="44" column="69" selection-start-line="44" selection-start-column="69" selection-end-line="44" selection-end-column="69" />
+        <state relative-caret-position="476">
+          <caret line="28" column="67" lean-forward="true" selection-start-line="28" selection-start-column="67" selection-end-line="28" selection-end-column="67" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

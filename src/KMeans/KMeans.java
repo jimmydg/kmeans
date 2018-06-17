@@ -11,9 +11,10 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+
 public class KMeans {
 
-    public KMeansReturn execute(KMeansParams params) {
+    KMeansReturn execute(KMeansParams params) {
         String inputFile = params.getInputFile();
         int k = params.getAmountOfClusters();
         int numThreads = params.getNumThreads();
@@ -26,7 +27,6 @@ public class KMeans {
         }
 
         List<Point2D> centers = initializeRandomCenters(k, 0, 1000000);
-        System.out.println("Parallelized version");
         long start = System.currentTimeMillis();
         List<Point2D> result = concurrentKmeans(centers, dataset, k, numThreads);
         Long runtime = (System.currentTimeMillis() - start);
@@ -35,30 +35,51 @@ public class KMeans {
         KMeansReturn kMeansReturn = new KMeansReturn();
         kMeansReturn.setResult(result);
         kMeansReturn.setRunTime(runtime);
+        kMeansReturn.setAmountOfClusters(k);
+        kMeansReturn.setNumThreads(numThreads);
 
         return kMeansReturn;
     }
 
     private static final int REPLICATION_FACTOR = 200;
-    private static final int NUM_THREADS = 30;
 
     public static class Point2D {
 
         private float x;
         private float y;
 
-        public Point2D(float x, float y) {
+        Point2D(float x, float y) {
 
             this.x = x;
             this.y = y;
         }
+
+        public Point2D() {
+        }
+
+        public float getX() {
+            return x;
+        }
+
+        public void setX(float x) {
+            this.x = x;
+        }
+
+        public float getY() {
+            return y;
+        }
+
+        public void setY(float y) {
+            this.y = y;
+        }
+
 
         private double getDistance(Point2D other) {
             return Math.sqrt(Math.pow(this.x - other.x, 2)
                     + Math.pow(this.y - other.y, 2));
         }
 
-        public int getNearestPointIndex(List<Point2D> points) {
+        int getNearestPointIndex(List<Point2D> points) {
             int index = -1;
             double minDist = Double.MAX_VALUE;
             for (int i = 0; i < points.size(); i++) {
@@ -71,7 +92,7 @@ public class KMeans {
             return index;
         }
 
-        public static Point2D getMean(List<Point2D> points) {
+        static Point2D getMean(List<Point2D> points) {
             float accumX = 0;
             float accumY = 0;
             if (points.size() == 0) return new Point2D(accumX, accumY);
@@ -89,7 +110,7 @@ public class KMeans {
 
         @Override
         public boolean equals(Object obj) {
-            if (obj == null || !(obj.getClass() != Point2D.class)) {
+            if (obj == null || obj.getClass() == Point2D.class) {
                 return false;
             }
             Point2D other = (Point2D) obj;
@@ -98,7 +119,7 @@ public class KMeans {
 
     }
 
-    public static List<Point2D> getDataset(String inputFile) throws Exception {
+    private static List<Point2D> getDataset(String inputFile) throws Exception {
         List<Point2D> dataset = new ArrayList<>();
         BufferedReader br = new BufferedReader(new FileReader(inputFile));
         String line;
@@ -114,7 +135,7 @@ public class KMeans {
         return dataset;
     }
 
-    public static List<Point2D> initializeRandomCenters(int n, int lowerBound, int upperBound) {
+    private static List<Point2D> initializeRandomCenters(int n, int lowerBound, int upperBound) {
         List<Point2D> centers = new ArrayList<>(n);
         for (int i = 0; i < n; i++) {
             float x = (float) (Math.random() * (upperBound - lowerBound) + lowerBound);
@@ -159,7 +180,7 @@ public class KMeans {
         return lists;
     }
 
-    public static List<Point2D> concurrentGetNewCenters(final List<Point2D> dataset, final List<Point2D> centers, int numThreads) {
+    private static List<Point2D> concurrentGetNewCenters(final List<Point2D> dataset, final List<Point2D> centers, int numThreads) {
         final List<List<Point2D>> clusters = new ArrayList<List<Point2D>>(centers.size());
         for (int i = 0; i < centers.size(); i++) {
             clusters.add(new ArrayList<Point2D>());
@@ -183,7 +204,7 @@ public class KMeans {
         return newCenters;
     }
 
-    public static List<Point2D> getNewCenters(List<Point2D> dataset, List<Point2D> centers) {
+    private static List<Point2D> getNewCenters(List<Point2D> dataset, List<Point2D> centers) {
         List<List<Point2D>> clusters = new ArrayList<>(centers.size());
         for (int i = 0; i < centers.size(); i++) {
             clusters.add(new ArrayList<Point2D>());
@@ -199,7 +220,7 @@ public class KMeans {
         return newCenters;
     }
 
-    public static double getDistance(List<Point2D> oldCenters, List<Point2D> newCenters) {
+    private static double getDistance(List<Point2D> oldCenters, List<Point2D> newCenters) {
         double accumDist = 0;
         for (int i = 0; i < oldCenters.size(); i++) {
             double dist = oldCenters.get(i).getDistance(newCenters.get(i));
@@ -219,7 +240,7 @@ public class KMeans {
         return centers;
     }
 
-    public static List<Point2D> concurrentKmeans(List<Point2D> centers, List<Point2D> dataset, int k, int numThreads) {
+    private static List<Point2D> concurrentKmeans(List<Point2D> centers, List<Point2D> dataset, int k, int numThreads) {
         boolean converged;
         do {
             List<Point2D> newCenters = concurrentGetNewCenters(dataset, centers, numThreads);
@@ -229,37 +250,4 @@ public class KMeans {
         } while (!converged);
         return centers;
     }
-
-//    public static void main(String[] args) {
-//        if (args.length != 2) {
-//            System.err.println("Usage: KMeans.KMeans <INPUT_FILE> <K>");
-//            System.exit(-1);
-//        }
-//        String inputFile = args[0];
-//        int k = Integer.valueOf(args[1]);
-//        List<Point2D> dataset = null;
-//        try {
-//            dataset = getDataset(inputFile);
-//        } catch (Exception e) {
-//            System.err.println("ERROR: Could not read file " + inputFile);
-//            System.exit(-1);
-//        }
-//        List<Point2D> centers = initializeRandomCenters(k, 0, 1000000);
-//        System.out.println("Non-parallelized version");
-//        long start = System.currentTimeMillis();
-//        List<Point2D> result1 = kmeans(centers, dataset, k);
-//        System.out.println("Time elapsed: " + (System.currentTimeMillis() - start) + "ms");
-//        System.out.println(result1);
-//        System.out.println();
-//        System.out.println();
-//        System.out.println("Parallelized version");
-//        start = System.currentTimeMillis();
-//        List<Point2D> result2 = concurrentKmeans(centers, dataset, k);
-//        System.out.println("Time elapsed: " + (System.currentTimeMillis() - start) + "ms");
-//        System.out.println(result2);
-//        System.out.println();
-//        System.out.println();
-//        System.exit(0);
-//    }
-
 }
