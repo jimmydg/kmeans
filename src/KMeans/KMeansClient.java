@@ -44,9 +44,6 @@ public class KMeansClient {
             // Tell the producer to send the message
             producer.send(message);
 
-            // Generating a certain randomness for the exercise
-            Thread.sleep(new Random().nextInt(5000));
-
             // Wait for the returning message
             MessageConsumer consumer = session.createConsumer(out);
             Message returnMessage = consumer.receive();
